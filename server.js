@@ -30,7 +30,7 @@ app.get("/", async (req, res) => {
 app.get("/:id", async (req, res) => {
     // get the id off request
     // ! Note the data type of the identifier must match the schema
-    const id = Number(req.params.id)
+    const id = parseInt(req.params.id)
     // find on todo
     const todo = await prisma.Todo.findUnique({
         // SQL WHERE QUERY
@@ -59,7 +59,7 @@ app.post("/", async (req, res) => {
 app.put("/:id", async (req, res) => {
     // get the id off request
     // ! Note the data type of the identifier must match the schema
-    const id = Number(req.params.id)
+    const id = parseInt(req.params.id)
 
     // get data from request body
     const { subject, details } = req.body
@@ -81,7 +81,7 @@ app.put("/:id", async (req, res) => {
 app.delete("/:id", async (req, res) => {
     // get the id off request
     // ! Note the data type of the identifier must match the schema
-    const id = Number(req.params.id)
+    const id = parseInt(req.params.id)
 
     // delete 
     const todo = await prisma.Todo.delete({
